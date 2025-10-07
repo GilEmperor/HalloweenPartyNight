@@ -1,0 +1,665 @@
+:root {
+  --accent-orange: 204, 110, 65; /* de RGB-waarden van #CC6E41 */
+  --black: 0, 0, 0;
+  --white: 255, 255, 255;
+  --light-grey: 217, 217, 217;
+  --base-font: "Copse", serif;
+}
+
+/* reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: var(--base-font);
+  scroll-behavior: smooth;
+}
+* { box-sizing: border-box; }
+
+/* header */
+header {
+  position: relative;
+  width: 100vw;      /* forceert volledige viewport-breedte */
+  max-width: 100%;
+  height: 95vh;     /* zoals gewenst: header is 90% van viewheight */
+  overflow: hidden;
+  left: 0;
+  
+}
+
+/* achtergrond-video */
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100vw;  /* minstens de volledige viewport-breedte */
+  min-height: 100%;  /* minstens de volledige hoogte van de header (90vh) */
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  display: block;    /* voorkomt onverwachte inline-ruimtes */
+}
+
+header .topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between; /* logo links en logo rechts */
+  align-items: center;            /* verticaal centreren */
+
+  padding: 0 20px; /* klein beetje ruimte links/rechts */
+  
+  background: linear-gradient(
+  to top,
+  rgba(var(--accent-orange), 0) 0%,  /* oranje maar volledig transparant */
+  rgba(0, 0, 0, 0.5) 100%             /* halfzwart boven */
+);
+
+  z-index: 1; /* boven de video */
+}
+
+header .topbar img {
+  height: 40%;   /* schaalt mee met de bar */
+  max-height: 40%;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  header .topbar img {
+    height: 5vw;     /* schaal mee met viewport */
+    max-height: 40%; /* nooit groter dan origineel */
+  }
+
+}
+
+header .content {
+  position: absolute;
+  bottom: 10%;               /* of 0, als je 'm helemaal onderin wil */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 100%;              /* belangrijk voor schalen van children */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+@media (max-width: 1000px) {
+  header .content {
+    bottom: 20%; /* of 0, als je 'm helemaal onderin wil */
+  }
+}
+
+header .content > * {
+  margin-bottom: 4rem;
+}
+
+header .content > *:last-child {
+  margin-bottom: 0;
+}
+
+
+header .content img {
+  width: 60vw;
+  max-width: 700px; /* aanpasbare maximumwaarde */
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  header .content img {
+    width: 90vw;
+    max-width: 100%; /* extra: vult scherm mooi op mobiel */
+  }
+}
+
+.button {
+    font-size: 1.25rem;
+    text-decoration: none;
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    background-color: rgb(var(--black));
+    color: rgb(var(--white));
+    box-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in;
+}
+
+.button:hover {
+    background-color: rgb(var(--white));
+    color: rgb(var(--accent-orange));
+    box-shadow: inset 0 0 0 0.3rem rgb(var(--accent-orange)); /* border aan de binnenkant */
+
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.25rem;
+  color: rgb(var(--white));
+  text-shadow: 0 0.25rem 0.75rem 0 rgba(0, 0, 0, 0.15);
+}
+
+p {
+    margin: 0;
+}
+
+/* Introduction */
+section {
+    text-align: center;
+    font-size: 1.8rem;
+    padding-top:10rem;
+    padding-bottom:10rem;
+}
+
+@media (max-width: 600px) {
+    section {
+        font-size: 1.25rem;
+        padding-top:5rem;
+        padding-bottom:5rem;
+    }
+}
+
+section .content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem
+}
+
+.introduction {
+    background-color: rgb(var(--black));
+    color: rgb(var(--white));
+}
+
+.introduction em {
+    color: rgb(var(--accent-orange));
+    font-style: normal;
+}
+
+.about {
+    background-color: rgb(var(--light-grey));
+    color: rgb(var(--black));
+    position: relative;
+}
+
+.about em {
+    color: rgb(var(--accent-orange));
+    font-style: normal;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+}
+
+article {
+    margin-bottom: 2rem;
+}
+
+.about h1{
+    color: rgb(var(--accent-orange));;
+}
+
+.about .button {
+    background-color: rgb(var(--accent-orange));
+    color: rgb(var(--black));
+}
+
+.about .button:hover {
+    background-color: rgb(var(--black));
+    color: rgb(var(--accent-orange));
+    box-shadow: none;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    text-align: left;
+    padding: 2rem;
+    border: 0.5rem solid rgb(var(--accent-orange));
+    margin-bottom: 3rem;
+}
+
+.info dl {
+  display: grid;
+  grid-template-columns: max-content 1fr; /* linker kolom zo breed als nodig, rechter kolom vult rest */
+  gap: 0.5rem 2rem; /* rij-gat, kolom-gat */
+  margin: 0;
+  align-items: center;
+  padding-right: 3rem;
+  border-right: 0.3rem solid rgb(var(--accent-orange));
+}
+
+.info dt {
+  font-weight: bold;
+}
+
+.info dd {
+  margin: 0; /* standaard margin weghalen */
+}
+
+.info img {
+  max-width: 50vw;
+  height: auto;
+  padding-left: 3rem;
+}
+
+.info a {
+  color: rgb(var(--accent-orange));
+}
+
+@media (max-width: 850px) {
+  .info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info dl {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 0.3rem solid rgb(var(--accent-orange));
+    padding-bottom: 1rem;
+  }
+  .info img {
+    padding-top: 1rem;
+    padding-left: 0;
+    max-width: 70vw;
+  }
+}
+
+.line-up {
+  background-color: rgb(var(--accent-orange));
+  color: rgb(var(--black));
+}
+
+.line-up em {
+  color: rgb(var(--white));
+  font-style: normal;
+}
+
+.line-up h1 {
+  color: rgb(var(--white));
+}
+
+.line-up .DJ-Richmeister{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.line-up .DJ-Richmeister img{
+  max-width: 450px;
+  margin-right: 3rem;
+}
+
+.line-up .DJ-Richmeister article{
+  text-align: left;
+}
+
+.line-up .DJ-Richmeister article p{
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 850px) {
+  .line-up .DJ-Richmeister{
+    flex-direction: column;
+    align-items: center;
+  }
+  .line-up .DJ-Richmeister article{
+    text-align: center;
+  }
+  .line-up .DJ-Richmeister img{
+    margin-right: 0;
+    width: 400px;
+    max-width: 90vw;
+  }
+  .line-up .DJ-Richmeister article h1{
+    font-size: 2rem;
+  }
+}
+
+.guests {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5rem;
+  
+}
+
+.guests .guest-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guests .guest-block img{
+  max-width: 350px;
+}
+
+.guests .guest-block h2{
+  font-size: 2rem;
+  font-weight: normal;
+  margin-top: 1rem;
+}
+
+.line-up .content > .button {
+  background-color: rgb(var(--white));
+  color: rgb(var(--accent-orange));
+}
+
+.line-up .content > .button:hover {
+  background-color: rgb(var(--black));
+  color: rgb(var(--white));
+  box-shadow: none;
+}
+
+@media (max-width: 850px) {
+  .guests {
+    flex-direction: column;
+  }
+  .guests .guest-block{
+    margin-bottom: 3rem;
+  }
+
+  .guests .guest-block img{
+    width: 400px;
+    max-width: 90vw;
+  }
+}
+
+.sponsors {
+  background-color: #1E1E1E;
+  padding: 0;
+}
+
+.sponsors .content{
+  max-width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.sponsors img{
+  width: 200px;
+}
+
+.sponsors .afewit{
+  width: 140px;
+}
+
+@media (max-width: 700px) {
+  .sponsors .content{
+    max-width: 90vw;
+  }
+  .sponsors img{
+    width: 30vw;
+  }
+  .sponsors .afewit{
+    width: 20vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+}
+
+/* footer */
+footer {
+  background-color: rgb(var(--black));
+  color: rgb(var(--white));
+  text-align: center;
+  padding: 4rem 0 2rem 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+footer .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10%;
+}
+
+footer a {
+  color: rgb(var(--accent-orange));
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: rgb(var(--white));
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.footer-contact {
+  margin-bottom: 2rem;
+}
+
+.footer-contact .socials {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-contact .socials img {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.2s ease;
+}
+
+.footer-contact .socials img:hover {
+  filter: brightness(0) invert(0.6) sepia(1) hue-rotate(-15deg) saturate(8);
+}
+
+.footer-credits {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+/* ================================
+   BACKGROUND IMAGES
+   ================================ */
+
+/* --- Introduction Section --- */
+
+.about {
+  position: relative;
+  z-index: 1; /* hoger dan de volgende section */
+}
+
+.line-up {
+  position: relative;
+  z-index: 0; /* lager, zodat de tak eroverheen kan */
+}
+
+section {
+  position: relative; /* belangrijk zodat pseudo-elementen hierbinnen blijven */
+}
+
+/* eerste vleermuis - linksboven */
+.introduction::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25vw;   /* schaalt mee met viewport */
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Bats1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  pointer-events: none; /* zorgt dat de afbeelding geen muisinteractie blokkeert */
+}
+
+/* tweede vleermuis - rechtsonder */
+.introduction::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30vw;   /* iets groter en ook schaalbaar */
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Bats2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
+}
+
+/* ================================
+   BACKGROUND IMAGES – ABOUT SECTION
+   ================================ */
+
+/* --- Tak 1: rechtsboven --- */
+.about::before {
+  content: "";
+  position: absolute;
+  top: 2vw;       /* iets laten uitsteken boven de section */
+  right: 0;
+  width: 20vw;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Tak1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top right;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Tak 2: links midden/onder --- */
+.about::after {
+  content: "";
+  position: absolute;
+  bottom: 8vw;    /* iets boven de onderkant */
+  left: 0;      /* mag een beetje buiten beeld steken */
+  width: 30vw;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Tak2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 700px) {
+  .about::after {
+    bottom: 55%;    /* iets boven de onderkant */
+    width: 25vw;
+  }
+}
+
+/* --- Extra pseudo-element voor Tak 3 (rechts onder) --- */
+.about .content::before {
+  content: "";
+  position: absolute;
+  bottom: -10vw;    /* laat iets overlappen met volgende section */
+  right: 0;
+  width: 30vw;
+  min-width: 200px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Tak3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ================================
+   BACKGROUND IMAGES – LINE-UP SECTION
+   ================================ */
+
+/* --- Web 1: linksboven --- */
+.line-up::before {
+  content: "";
+  position: absolute;
+  top: -1vw;       /* iets laten uitsteken boven de section */
+  left: 0;
+  width: 40vw;
+  min-width: 300px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Web1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 850px) {
+  .line-up::before {
+    left: -5vw;       /* iets laten uitsteken boven de section */
+  }
+}
+
+/* --- Web 2: Rechts midden --- */
+.line-up::after {
+  content: "";
+  position: absolute;
+  top: 37%;    /* iets boven de onderkant */
+  right: 0;      /* mag een beetje buiten beeld steken */
+  width: 30vw;
+  max-width: 400px;
+  min-width: 150px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Web2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Extra pseudo-element voor Web 3: links onder --- */
+.line-up .content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;    /* laat iets overlappen met volgende section */
+  left: 0;
+  width: 30vw;
+  max-width: 400px;
+  min-width: 150px;
+  aspect-ratio: 1 / 1;
+  background-image: url("images/Background-images/Web3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom left;
+  pointer-events: none;
+  z-index: 2;
+}
+
+
